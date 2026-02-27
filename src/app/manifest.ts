@@ -2,15 +2,15 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Spliit',
-    short_name: 'Spliit',
+    name: 'KHE Split',
+    short_name: 'KHE Split',
     description:
-      'A minimalist web application to share expenses with friends and family. No ads, no account, no problem.',
+      'A sleek expense sharing app for friends and family.',
     start_url: '/groups',
     id: '/groups',
     display: 'standalone',
     background_color: '#fff',
-    theme_color: '#047857',
+    theme_color: '#6d28d9',
     icons: [
       {
         src: '/logo/48x48.png',
