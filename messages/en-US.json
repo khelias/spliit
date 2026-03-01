@@ -304,6 +304,26 @@
   },
   "Stats": {
     "title": "Stats",
+    "Filters": {
+      "spender": "Spender",
+      "everyone": "Everyone",
+      "categoryGrouping": "Category Group",
+      "allGroupings": "All Groups",
+      "category": "Category",
+      "allCategories": "All Categories",
+      "dateFrom": "From",
+      "dateTo": "To",
+      "allTime": "All time",
+      "reset": "Reset filters"
+    },
+    "Charts": {
+      "byGrouping": "Spending by Group",
+      "byGroupingDescription": "Total spending broken down by category group",
+      "byCategory": "Spending by Category",
+      "byCategoryDescription": "Top categories by spending",
+      "bySpender": "Spending by Person",
+      "bySpenderDescription": "Who spent the most"
+    },
     "Totals": {
       "title": "Totals",
       "description": "Spending summary of the entire group.",
@@ -312,7 +332,9 @@
       "yourSpendings": "Your total spendings",
       "yourEarnings": "Your total earnings",
       "yourShare": "Your total share"
-    }
+    },
+    "noExpenses": "No expenses match your filters.",
+    "resetFilters": "Reset filters"
   },
   "Activity": {
     "title": "Activity",
