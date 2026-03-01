@@ -1,4 +1,4 @@
-import { getGroupExpenses } from '@/lib/api'
+import { getGroup, getGroupExpenses } from '@/lib/api'
 import {
   getTotalActiveUserPaidFor,
   getTotalActiveUserShare,
@@ -15,7 +15,10 @@ export const getGroupStatsProcedure = baseProcedure
     }),
   )
   .query(async ({ input: { groupId, participantId } }) => {
-    const expenses = await getGroupExpenses(groupId)
+    const [expenses, group] = await Promise.all([
+      getGroupExpenses(groupId),
+      getGroup(groupId),
+    ])
     const totalGroupSpendings = getTotalGroupSpending(expenses)
 
     const totalParticipantSpendings =
@@ -31,5 +34,25 @@ export const getGroupStatsProcedure = baseProcedure
       totalGroupSpendings,
       totalParticipantSpendings,
       totalParticipantShare,
+      expenses: expenses.map((e) => ({
+        id: e.id,
+        expenseDate: e.expenseDate,
+        amount: e.amount,
+        isReimbursement: e.isReimbursement,
+        paidBy: e.paidBy,
+        category: e.category
+          ? {
+              id: e.category.id,
+              grouping: e.category.grouping,
+              name: e.category.name,
+            }
+          : null,
+        paidFor: e.paidFor.map((pf) => ({
+          participant: pf.participant,
+          shares: Number(pf.shares),
+        })),
+        splitMode: e.splitMode,
+      })),
+      participants: group?.participants ?? [],
     }
   })
